@@ -119,6 +119,10 @@
           }
         }
       }
-    }},
-  "defaultProject": "RedditFront"
+    }
+  },
+  "defaultProject": "RedditFront",
+  "cli": {
+    "analytics": "7f1ec65f-00ba-4cc8-94a0-2ce60ea10f97"
+  }
 }
