@@ -8,10 +8,11 @@ import { PostModel } from '../shared/post-model';
   styleUrls: ['./home.component.css']
 })
 export class HomeComponent implements OnInit {
-
   posts$: Array<PostModel> = [];
+
   constructor(private postService: PostService) { 
-    this.postService.getAllPosts().subscribe(post => {
+    
+    this.postService.getAllPost().subscribe(post => {
       this.posts$ = post;
     })
   }
