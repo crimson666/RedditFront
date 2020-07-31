@@ -11,7 +11,6 @@ export class HomeComponent implements OnInit {
   posts: Array<PostModel> = [];
 
   constructor(private postService: PostService) { 
-    
     this.postService.getAllPost().subscribe(post => {
       this.posts = post;
     })
