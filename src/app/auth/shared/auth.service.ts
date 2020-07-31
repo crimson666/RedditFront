@@ -11,6 +11,10 @@ import { map, tap } from 'rxjs/operators';
   providedIn: 'root'
 })
 export class AuthService {
+  
+  isLoggedIn(): boolean {
+    throw new Error("Method not implemented.");
+  }
 
   refreshToken() {
     const refreshTokenPayload = {
