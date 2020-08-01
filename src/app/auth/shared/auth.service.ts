@@ -18,7 +18,7 @@ export class AuthService {
   refreshTokenPayload = {
     refreshToken: this.getRefreshToken(),
     username: this.getUserName()
-    }
+    };
   
   isLoggedIn(): boolean {
     return this.getJwtToken() != null;
@@ -36,16 +36,21 @@ export class AuthService {
   //       this.localStorage.store('expiresAt', response.expiresAt);
   //     }));
   // }
+
+
   refreshToken() {
-    return this.httpClient.post('http://localhost:8080/api/auth/refresh/token',
+    return this.httpClient.post<LoginResponse>('http://localhost:8080/api/auth/refresh/token',
     this.refreshTokenPayload)
     .pipe(tap(response => {
     this.localStorage.clear('authenticationToken');
     this.localStorage.clear('expiresAt');
+    // localStorage.setItem('authenticationToken',JSON.stringify(response.authenticationToken));
+    // localStorage.setItem('expiresAt', JSON.stringify(response.expiresAt));
     this.localStorage.store('authenticationToken',response.authenticationToken);
     this.localStorage.store('expiresAt', response.expiresAt);
     }));
   }
+
   getJwtToken() {
       return  this.localStorage.retrieve('authenticationToken');
   }
@@ -90,6 +95,6 @@ export class AuthService {
     this.localStorage.clear('authenticationToken');
     this.localStorage.clear('username');
     this.localStorage.clear('refreshToken');
-    this.localStorage.clear('expiresAt')
+    this.localStorage.clear('expiresAt');
   }
 }
